@@ -1,0 +1,37 @@
+{% extends 'Base.html' %}
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="main-section">
+    <div class="page-section nopadding cs-nomargin"
+        style="margin-top: 0px;padding-top: 60px;padding-bottom: 60px;margin-bottom: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                            <h4 class="text-center" style="margin-bottom: 0;">WELCOME TO FOOD ONLINE</h4>
+                            <p class=" text-center text-white text-danger bg-dark  ">Welcome : <span
+                                    class=" text-center text-danger ">{{ user.first_name }}</span> <span
+                                    class=" text-center text-danger ">{{ user.last_name }}</span></p>
+                            <hr>
+                            <div id="restaurant-sets-holder">
+                                <h3 class="text-success text-capitalize">Here is your details</h3>
+                                <H6>THIS IS RESTAURENT DASHBOARD</H6>
+                                <h4 class="text-centre text-primary text-capitalize">RESTAURENT</h4>
+                                <!-- {% if user.role == 1 %}
+                                <h4 class="text-centre text-primary text-capitalize">restaurant </h4>
+                                {% elif user.role == 2 %}
+                                <h4 class="text-centre text-primary text-capitalize">customer </h4>
+                                {% else %}
+                                <h4 class="text-centre text-primary text-capitalize">you are only resistered </h4>
+                                {% endif %} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock %}

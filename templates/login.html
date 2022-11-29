@@ -1,0 +1,118 @@
+<!-- Main Section Start -->
+<title>log in</title>
+{% extends 'Base.html' %}
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="main-section">
+  <div class="page-section nopadding cs-nomargin"
+    style="margin-top: 0px;padding-top: 60px;padding-bottom: 60px;margin-bottom: 0px;">
+    <div class="container">
+      <div class="" style="border:2px soild red;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+          <div class="user-dashboard loader-holder">
+            <div class="user-holder">
+              <h3 class="text-center" style="margin-bottom: 0;">LOG IN</h3>
+              <h4 class="text-center">Please Enter Valid <Details>Email Password</Details>
+              </h4>
+              <hr>
+              {% if user.is_authenticated %}
+              <div id="restaurant-sets-holder">
+                <form action="{% url 'accounts:login' %}" method="POST">
+                  {% csrf_token %}
+                  <div class="form-group row container">
+                    <label for="staticEmail" name="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-5">
+                      <input type="text" id="email" name="email" readonly class="form-control" placeholder={{ user.email }} disabled
+                         >
+                    </div>
+                  </div>
+                  <div class="form-group row container">
+                    <label for="inputPassword" name="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-5">
+                      <input type="password" name="password" readonly class="form-control" id="password"
+                        placeholder='.....' disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="field-holder">
+                        <div class="payment-holder">
+                          <!-- <input type="submit" value="logout" id="btn-next-restaurant-information" class="bg-primary"> -->
+                          <button class="btn btn-danger"><a href="{% url 'accounts:logout' %}">logout</a></button>
+                        </div>
+                        <!-- {% if messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show " role="alert">
+                          {{ message }}
+                          {% endif %}
+                        </div> -->
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                          <strong>Message</strong> {{ message }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+
+                        {% endfor %}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- another form is user is not logged in  -->
+              {% else %}
+              <div id="restaurant-sets-holder">
+                <form action="{% url 'accounts:login' %}" method="POST">
+                  {% csrf_token %}
+                  <div class="form-group row container">
+                    <label for="staticEmail" name="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-5">
+                      <input type="text" id="email" name="email" class="form-control" placeholder="email@example.com">
+                    </div>
+                  </div>
+                  <div class="form-group row container">
+                    <label for="inputPassword" name="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-5">
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="field-holder">
+                        <div class="payment-holder">
+                          <input type="submit" value="LOGIN" id="btn-next-restaurant-information" class="bg-primary">
+                        </div>
+                        <!-- {% if messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show " role="alert">
+                          {{ message }}
+                          {% endif %}
+                        </div> -->
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                          <strong>Message</strong> {{ message }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+
+                        {% endfor %}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main Section End -->
+{% include 'includes/footer.html'%}
+{% endblock %}
