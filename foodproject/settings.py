@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 from pathlib import Path
- 
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +45,9 @@ INSTALLED_APPS = [
     'foodapp',
     'vendor'
 ]
+X_FRAME_OPTIONS='SAMEORIGIN'
+
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,26 +128,56 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+import os
+
+
+#Static files
+STATIC_DIR = BASE_DIR / 'static'
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS=[BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # TO add the collectstatic (change the admin panel design) /// It's use for deployement it will copy all satic folder to one folder
 
 
 MEDIA_URL='/media/'
-MEDIA_ROOT=[BASE_DIR /'media']
+MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
+
+# MEDIA_DIR = BASE_DIR / 'media'
+# MEDIA_ROOT = MEDIA_DIR
+# MEDIA_URL = '/media/'
+
+# MEDIA_ROOT = [BASE_DIR / 'media/user']
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# MEDIA_URL = '/media/'
+# MEDIA_URL = '/mediafiles/'
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'mediafiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# LOGIN_REDIRECT_URL = 'index'
-# # LOGOUT_REDIRECT_URL = 'index'
-# LOGIN_URL = "login"
-from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+
+
+
+EMAIL_HOST='smtp.@gmail.com'
+EMAIL_PORT=25
+EMAIL_HOST_USER='foodmonster@gmail.com'
+EMAIL_HOST_PASSWORD='Soubhagya1.'
+EMAIL_USE_TLS=True
+# EMAIL_HOST_TLS= True
+
+
+# LOGIN_REDIRECT_URL = 'index'
+# LOGOUT_REDIRECT_URL = 'index'
+# LOGIN_URL = "login"
 # MIDDLEWARE_CLASSES = (
 #     "‘django.middleware.csrf.CsrfViewMiddleware’",
 #     "‘django.middleware.common.CommonMiddleware’",
@@ -157,4 +193,3 @@ MESSAGE_TAGS = {
 # CSRF_COOKIE_HTTPONLY = True
 
 # SESSION_COOKIE_SECURE = True
-

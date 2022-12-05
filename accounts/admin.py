@@ -2,6 +2,7 @@ from django.contrib import admin
 
 
 from accounts.models import User,userProfile
+from vendor.models import vendor_model
 
 from django.contrib.auth.admin import UserAdmin
 
@@ -11,7 +12,9 @@ class customerUserAdmin(UserAdmin):
     filter_horizontal=()
     list_filter =()
     fieldsets=()
-    list_display=('username','first_name', 'last_name','role','email','is_staff','password')
-    
+    list_display=('username','first_name', 'last_name','role','email','is_staff','password',)
+
+
+
 admin.site.register(User,customerUserAdmin)
 admin.site.register(userProfile)

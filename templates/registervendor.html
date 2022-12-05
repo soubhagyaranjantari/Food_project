@@ -15,7 +15,7 @@
                                 marketplace.</p>
                             <hr>
                             <div id="restaurant-sets-holder">
-                                <form class="form-fields-set foodbakery-dev-restaurant-form" method="POST" action="">
+                                <form  class="form-fields-set foodbakery-dev-restaurant-form" method="POST" action=""  >
                                     <!-- register-select-package.html -->
                                     {% csrf_token %}
                                     <ul
@@ -26,23 +26,23 @@
                                                     <div class="row">
                                                         <ul>
                                                             <li>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="field-holder">
                                                                         <label>First name</label>{{user.first_name}}
-                                                                        <!-- <input type="text"
+                                                                         <input type="text"
                                                                             class="foodbakery-dev-req-field"
                                                                             id="foodbakery_restaurant_title_59054637"
                                                                             name="foodbakery_restaurant_title"> -->
-                                                                    </div>
+                                                                <!-- </div>
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="field-holder">
                                                                         <label>Last name</label>{{user.last_name}}
-                                                                        <!-- <input type="text"
+                                                                         <input type="text"
                                                                             id="foodbakery_restaurant_phone_59054637"
                                                                             name="foodbakery_restaurant_contact_phone"> -->
-                                                                    </div>
-                                                                </div>
+                                                                <!-- </div>
+                                                                </div> -->
 
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="field-holder">
@@ -54,31 +54,61 @@
                                                                 </div>
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                     <div class="field-holder">
+                                                                        <label>Select Your Email</label>
+                                                                        <select name="get_id" id="">
+                                                                            <option value="">Select Your Email</option>
+                                                                            {% for i in im %}
+                                                                            <option value="{{ i.id }}">{{ i.email }}
+                                                                            </option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <h1>{{ i.first_name }}</h1> -->
+                                                                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="field-holder">
+                                                                        <label>Username</label>{{user.username}}
+                                                                         <input type="text"
+                                                                            id="foodbakery_restaurant_contact_email_59054637"
+                                                                            name="foodbakery_restaurant_contact_email"> -->
+                                                                <!-- </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="field-holder">
+                                                                        <label>Email Address</label>{{user.email}}
+                                                                         <input type="text"
+                                                                            id="foodbakery_restaurant_contact_email_59054637"
+                                                                            name="foodbakery_restaurant_contact_email"> -->
+                                                                <!-- </div> -->
+                                                                <!-- </div> -->
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="field-holder">
                                                                         <label>Vendor_License</label>{{form.vendor_license}}
                                                                         <!-- <input type="text"
-                                                                            id="foodbakery_restaurant_contact_username_59054637"
-                                                                            name="foodbakery_restaurant_contact_username"> -->
+                                                                        id="foodbakery_restaurant_contact_username_59054637"
+                                                                        name="foodbakery_restaurant_contact_username"> -->
                                                                     </div>
                                                                 </div>
-                                                            </li>
+                                                                <!-- </li> -->
 
-                                                            <li>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                                <!-- <li> -->
+                                                                <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                                     <div class="field-holder">
                                                                         <label>Password</label>{{user.password}}
-                                                                        <!-- <input type="password"
+                                                                         <input type="password"
                                                                             name="foodbakery_restaurant_password"
                                                                             class="foodbakery-dev-username foodbakery-dev-req-field"> -->
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                                <!-- </div>
+                                                                </div>  -->
+                                                                <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                                     <div class="field-holder">
-                                                                        <label>Confirm Password</label>{{user.confirm_password}}
-                                                                        <!-- <input type="password"
+                                                                        <label>Confirm
+                                                                            Password</label>{{user.confirm_password}}
+                                                                         <input type="password"
                                                                             name="foodbakery_restaurant_user_confirmPassword"
                                                                             class="foodbakery-dev-user-email foodbakery-dev-req-field"> -->
-                                                                    </div>
-                                                                </div>
+                                                                <!-- </div>
+                                                                </div>  -->
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -86,16 +116,32 @@
                                             </div>
                                         </li>
                                         <ul class="errorlist">
-                                            {% for field in venDor %}
-                                                {% if venDor.errors %}
-                                                    {% for error in field.errors %}
-                                                        <li class="text-success">{{ error }}</li>
-                                                    {% endfor %}    
-                                                {% endif %}
+                                            <!-- {% if img_obj %}
+                                            <h3>Succesfully uploaded : {{img_obj.vendor_license}}</h3>
+                                            <img src="{{ img_obj.license.url }}" alt="connect" style="max-height:300px">
+                                            {% endif %} -->
+                                            <!-- {% for field in venDor %}
+                                            {% if venDor.errors %}
+                                            {% for error in field.errors %}
+                                            <li class="text-success">{{ error }}</li>
                                             {% endfor %}
-                                        <li class="text-primary">{{ venDor.non_field_errors }}</li>
+                                            {% endif %}
+                                            {% endfor %}
+                                            <li class="text-primary">{{ venDor.non_field_errors }}</li> -->
                                         </ul>
-                                        
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <div class="alert alert-{{message.tags}} alert-dismissible fade show"
+                                            role="alert">
+                                            <strong>Message</strong> {{ message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        {% endfor %}
+                                        {% endif %}
+
                                         <li>
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
